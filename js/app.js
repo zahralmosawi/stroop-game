@@ -4,7 +4,7 @@ let round = 1
 let timeLeft = 1.0
 let score = 0
 let curretColor
-let totalRound = 10
+let totalRounds = 10
 
 //DOM elements
 const startScreen = document.querySelector('#start-screen')
@@ -47,7 +47,7 @@ function startGame(){
 }
 
 function nextRound(){
-    if(round > totalRound){
+    if(round > totalRounds){
         endGame()
         return
     }
@@ -87,6 +87,23 @@ function updateTopBar(){
 function getRandomColor(){
     //get a random color from colors array
     return colors[Math.floor(Math.random()*colors.length)]
+}
+
+function endGame(){
+    //hide game screen and show the end screen
+    gameScreen.classList.remove("show")
+    endScreen.classList.add("show")
+
+    let message
+    if(score >= 80){
+        message = "WOW! You're a Stroop Master!"
+    }else if(score >= 50){
+        message = "Not bad! Getting better!"
+    }else if(score >= 10){
+        message = "Keep practicing! You'll get there!"
+    }
+
+    finalScore.textContent = `${message} Your Score: ${score}`
 }
 
 }
