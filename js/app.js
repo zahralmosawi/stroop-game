@@ -21,16 +21,27 @@ const finalScore = document.querySelector('#final-score')
 
 const colorsBtns = document.querySelectorAll('.circle-btn')
 
-//start the game
+//start the game buttons
 playBtn.addEventListener('click', startGame)
 playAgainBtn.addEventListener('click', startGame)
 
+//when a user clicks a color 
 colorsBtns.forEach(button => {
     button.addEventListener('click', () => {
         const selectdColor = button.getAttribute('data-color');
         handleUserGuess(selectdColor)
     })
 })
+
+function startGame(){
+    //reset game state
+    score = 0
+    round = 1
+
+    startScreen.classList.remove("show") //hide the main screen 
+    endScreen.classList.remove("show") //hide the end screen if the user play again
+    gameScreen.classList.add("show") //show the game screen
+}
 
 }
 addEventListener('DOMContentLoaded', init)
