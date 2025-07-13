@@ -14,9 +14,9 @@ const endScreen = document.querySelector('#end-screen')
 const playBtn = document.querySelector('#play')
 const playAgainBtn = document.querySelector('#play-again')
 
-const roundElem = document.querySelector('#round')
-const timerElem = document.querySelector('#timer')
-const scoreElem = document.querySelector('#score')
+const roundDisplay = document.querySelector('#round')
+const timerDisplay = document.querySelector('#timer')
+const scoreDisplay = document.querySelector('#score')
 const wordDisplay = document.querySelector('#words')
 const finalScore = document.querySelector('#final-score')
 
@@ -69,6 +69,19 @@ function nextRound(){
     }else if (curretColor === "Pink"){
         wordDisplay.style.color = "pink"
     }
+}
+
+function handleUserGuess(selectdColor){
+    if(selectdColor === curretColor){
+        score += 10
+    }
+    round++
+    updateTopBar()
+}
+
+function updateTopBar(){
+    roundDisplay.textContent = `${round}/ ${totalRound}`
+    scoreDisplay.textContent = `${score}`
 }
 
 function getRandomColor(){
