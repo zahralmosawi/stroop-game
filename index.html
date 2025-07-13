@@ -9,29 +9,34 @@
 </head>
 <body>
     <!-- START SCREEN -->
-    <div id="start-screen">
+    <div id="start-screen" class="show">
         <h1>Stroop Game</h1>
-        <p class="description">This is attention game! You must choose the color of the word not the word itself
+        <p class="description">This is attention game! You must match the color of the word, not what it says. <br> <span> You have 10 rounds and 1 second for each. </span><span><Strong>Can you reach 100 points in 10 second?</Strong></span>
         </p>
-        <button id="play" class="button-1">let's play</button>
+        <button id="play" class="buttons">let's play</button>
     </div>
     <!-- MAIN SCREEN -->
-    <div id="game-screen">
+    <div id="game-screen" class="show">
         <div id="top-bar">
            <div id="round">1/10</div> 
-           <div id="timer">Time left: 10</div> 
+           <div id="timer">Time left: 10s</div> 
            <div id="score">Score: 0</div> 
         </div>
         <div id="words"> </div>
         <div id="colors">
-
+            <button class="circle-btn" style="background-color: red;"></button>
+            <button class="circle-btn" style="background-color: green;"></button>
+            <button class="circle-btn" style="background-color: yellow;"></button>
+            <button class="circle-btn" style="background-color: blue;"></button>
+            <button class="circle-btn" style="background-color: purple;"></button>
+            <button class="circle-btn" style="background-color: pink;"></button>
         </div>
     </div>
     <!-- FINAL SCREEN -->
-     <div id="end-screen">
+     <div id="end-screen" class="show">
         <p class="game-over">Game Over</p>
         <div id="final-score">Your Score: </div>
-        <button id="play-again" class="button-1">Play Again</button>
+        <button id="play-again" class="buttons">Play Again</button>
      </div>
 </body>
 </html>
