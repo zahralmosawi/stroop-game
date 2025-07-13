@@ -4,6 +4,7 @@ let round = 1
 let timeLeft = 1.0
 let score = 0
 let curretColor
+let totalRound = 10
 
 //DOM elements
 const startScreen = document.querySelector('#start-screen')
@@ -41,6 +42,18 @@ function startGame(){
     startScreen.classList.remove("show") //hide the main screen 
     endScreen.classList.remove("show") //hide the end screen if the user play again
     gameScreen.classList.add("show") //show the game screen
+}
+
+function nextRound(){
+    if(round > totalRound){
+        endGame()
+        return
+    }
+}
+
+function getRandomColor(){
+    //get random color from colors array
+    return colors[Math.floor(Math.random()*colors.length)]
 }
 
 }
