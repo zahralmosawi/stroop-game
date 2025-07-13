@@ -25,5 +25,12 @@ const colorsBtns = document.querySelectorAll('.circle-btn')
 playBtn.addEventListener('click', startGame)
 playAgainBtn.addEventListener('click', startGame)
 
+colorsBtns.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectdColor = button.getAttribute('data-color');
+        handleUserGuess(selectdColor)
+    })
+})
+
 }
 addEventListener('DOMContentLoaded', init)
