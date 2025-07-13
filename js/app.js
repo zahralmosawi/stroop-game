@@ -42,6 +42,8 @@ function startGame(){
     startScreen.classList.remove("show") //hide the main screen 
     endScreen.classList.remove("show") //hide the end screen if the user play again
     gameScreen.classList.add("show") //show the game screen
+
+    nextRound()
 }
 
 function nextRound(){
@@ -49,10 +51,28 @@ function nextRound(){
         endGame()
         return
     }
+    //display the word
+    const word = getRandomColor()
+    curretColor = getRandomColor() //get a roundom color for the word
+    wordDisplay.textContent = word
+
+    if(curretColor === "Red"){
+        wordDisplay.style.color = 'red'
+    }else if (curretColor === "Green"){
+        wordDisplay.style.color = "green"
+    }else if (curretColor === "Yellow"){
+        wordDisplay.style.color = "yellow"
+    }else if (curretColor === "Blue"){
+        wordDisplay.style.color = "blue"
+    }else if (curretColor === "Purple"){
+        wordDisplay.style.color = "purple"
+    }else if (curretColor === "Pink"){
+        wordDisplay.style.color = "pink"
+    }
 }
 
 function getRandomColor(){
-    //get random color from colors array
+    //get a random color from colors array
     return colors[Math.floor(Math.random()*colors.length)]
 }
 
