@@ -62,3 +62,7 @@ button:hover{
     height: 110px;
     border: none;
 }
+#feedback{
+   margin-top: 60px; 
+   font-size: 25px;
+}

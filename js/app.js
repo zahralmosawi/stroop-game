@@ -4,7 +4,7 @@ let round = 1
 let timeLeft = 1.0
 let score = 0
 let curretColor
-let totalRounds = 10
+const totalRounds = 10
 
 //DOM elements
 const startScreen = document.querySelector('#start-screen')
@@ -72,8 +72,17 @@ function nextRound(){
 }
 
 function handleUserGuess(selectdColor){
+    const feedback = document.querySelector('#feedback')
     if(selectdColor === curretColor){
         score += 10
+        feedback.textContent = 'correct' 
+        feedback.style.color = 'green'
+        feedback.className('feedback-message')
+    }else{
+        score -= 10
+        feedback.textContent = 'wrong'
+        feedback.style.color = 'red'
+        feedback.className('feedback-message')
     }
     round++
     updateTopBar()
