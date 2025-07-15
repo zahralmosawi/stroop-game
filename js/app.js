@@ -1,7 +1,8 @@
 function init(){
 const colors = ["Red","Green","Yellow","Blue","Purple","Pink"]
 let round = 1
-let timeLeft = 1.0
+let timerInterval
+let timeLeft = 2.0
 let score = 0
 let curretColor
 const totalRounds = 10 
@@ -83,14 +84,30 @@ function nextRound(){
     }else if (curretColor === "Pink"){
         wordDisplay.style.color = "pink"
     }
+
+    timeLeft = 2.0
+    updateTopBar()
+
+    clearInterval(timerInterval) //stop the old timer
+    timerInterval = setInterval(()=>{
+        timeLeft -= 0.1
+        updateTopBar()
+
+        if (timeLeft <= 0){
+            clearInterval(timerInterval)
+            handleUserGuess(null) //no guess
+        }
+    }, 100)
+
     round++
     updateTopBar()
     getRandomColorPosition()
 }
 
 function updateTopBar(){
-    roundDisplay.textContent = `${round}/ ${totalRounds}`
+    roundDisplay.textContent = `${round}/${totalRounds}`
     scoreDisplay.textContent = `${score}`
+    timerDisplay.textContent = `${timeLeft.toFixed(1)}s`
 }
 
 function endGame(){
@@ -105,6 +122,8 @@ function endGame(){
         message = "Not bad! Getting better!"
     }else if(score >= 10){
         message = "Keep practicing! You'll get there!"
+    }else{
+        message = ''
     }
 
     finalScore.textContent = `${message} Your Score: ${score}`
@@ -116,9 +135,9 @@ function getRandomColor(){
 }
 function getRandomColorPosition(){
     const colorsContainer = document.querySelector("#colors")
-    const buttons = Array.from(colorsContainer.children) //get button elements from the DOM
+    const buttons = Array.from(colorsContainer.children) //get button elements from the DOM in a array
     const shuffled = buttons.sort(() => Math.random() - 0.5 ) //random sort
-    
+
     shuffled.forEach(btn => colorsContainer.appendChild(btn))
 }
 }
