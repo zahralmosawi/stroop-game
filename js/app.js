@@ -4,7 +4,7 @@ let round = 1
 let timerInterval
 let timeLeft = 2.0
 let score = 0
-let curretColor
+let currentColor
 const totalRounds = 10 
 
 //DOM elements
@@ -49,13 +49,17 @@ function startGame(){
 
 function handleUserGuess(selectdColor){
     const feedback = document.querySelector('#feedback')
-    if(selectdColor === curretColor){
+    if(selectdColor === currentColor){
         score += 10
-        feedback.textContent = 'correct' 
-        feedback.style.color = 'green' 
+        const correctAnsSound = document.querySelector("#rightanswer")
+        correctAnsSound.play()
+        // feedback.textContent = 'correct' 
+        // feedback.style.color = 'green' 
     }else{
-        feedback.textContent = 'wrong'
-        feedback.style.color = 'red'
+        // feedback.textContent = 'wrong'
+        // feedback.style.color = 'red'
+        const wrongAnsSound = document.querySelector("#wronganswer")
+        wrongAnsSound.play()
     }
     nextRound()
     updateTopBar()
@@ -68,20 +72,20 @@ function nextRound(){
     }
     //display the word
     const word = getRandomColor()
-    curretColor = getRandomColor() //get a roundom color for the word
+    currentColor = getRandomColor() //get a roundom color for the word
     wordDisplay.textContent = word
 
-    if(curretColor === "Red"){
-        wordDisplay.style.color = 'red'
-    }else if (curretColor === "Green"){
+    if(currentColor === "Red"){
+        wordDisplay.style.color = "red"
+    }else if (currentColor === "Green"){
         wordDisplay.style.color = "green"
-    }else if (curretColor === "Yellow"){
+    }else if (currentColor === "Yellow"){
         wordDisplay.style.color = "yellow"
-    }else if (curretColor === "Blue"){
+    }else if (currentColor === "Blue"){
         wordDisplay.style.color = "blue"
-    }else if (curretColor === "Purple"){
+    }else if (currentColor === "Purple"){
         wordDisplay.style.color = "purple"
-    }else if (curretColor === "Pink"){
+    }else if (currentColor === "Pink"){
         wordDisplay.style.color = "pink"
     }
 

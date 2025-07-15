@@ -10,6 +10,7 @@ h1{
     padding-top: 100px;
     margin-bottom: 20px;
     font-family: "VT323";
+    word-spacing: -0.5ch;
 }
 .description{
     font-size: 1.3rem;
@@ -53,9 +54,10 @@ button:hover{
     font-size: 170px;
     font-weight: bold;
     color: #169976;
-    padding-top: 100px;
+    padding-top: 40px;
     margin-bottom: 20px; 
     font-family: "VT323";
+    word-spacing: -0.5ch;
 }
 #words{
     font-size: 150px;
@@ -84,7 +86,8 @@ button:hover{
 }
 #final-score{
     font-size: 1.3rem;
-    margin-bottom: 40px;
+    margin-bottom: 119px;
+    margin-top: 1px;
 }
 
 
