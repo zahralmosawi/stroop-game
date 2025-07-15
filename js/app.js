@@ -1,11 +1,15 @@
 function init(){
 const colors = ["Red","Green","Yellow","Blue","Purple","Pink"]
-let round = 1
+const totalRounds = 20 
+
+let round = 0
 let timerInterval
 let timeLeft = 2.0
 let score = 0
 let currentColor
-const totalRounds = 10 
+let currentWord
+let isFirstPhase  = true
+let isGamePaused = false
 
 //DOM elements
 const startScreen = document.querySelector('#start-screen')
@@ -30,16 +34,19 @@ playAgainBtn.addEventListener('click', startGame)
 //when a user clicks a color 
 colorsBtns.forEach(button => {
     button.addEventListener('click', () => {
-        const selectdColor = button.getAttribute('data-color');
-        handleUserGuess(selectdColor)
+        const selectedColor = button.getAttribute('data-color');
+        handleUserGuess(selectedColor)
     })
 })
 
 function startGame(){
     //reset game state
     score = 0
-    round = 1
-    
+    round = 0
+
+    isFirstPhase = true
+    isGamePaused = false
+
     startScreen.classList.remove("show") //hide the main screen 
     endScreen.classList.remove("show") //hide the end screen if the user play again
     gameScreen.classList.add("show") //show the game screen
@@ -47,33 +54,48 @@ function startGame(){
     nextRound()
 }
 
-function handleUserGuess(selectdColor){
-    const feedback = document.querySelector('#feedback')
-    if(selectdColor === currentColor){
-        score += 10
-        const correctAnsSound = document.querySelector("#rightanswer")
-        correctAnsSound.play()
-        // feedback.textContent = 'correct' 
-        // feedback.style.color = 'green' 
+function handleUserGuess(selectedColor){
+    //Sounds Effects
+    const correctAnsSound = document.querySelector("#rightanswer")
+    const wrongAnsSound = document.querySelector("#wronganswer")
+
+    if(isFirstPhase){
+        if(selectedColor === currentColor){
+            score += 10
+            correctAnsSound.play()
+            // feedback.textContent = 'correct' 
+            // feedback.style.color = 'green'
+        }else{
+            wrongAnsSound.play()
+        }
     }else{
-        // feedback.textContent = 'wrong'
-        // feedback.style.color = 'red'
-        const wrongAnsSound = document.querySelector("#wronganswer")
-        wrongAnsSound.play()
+        if(selectedColor === currentWord){
+            score += 10
+            correctAnsSound.play()
+        }else{
+            wrongAnsSound.play()
+        }
     }
-    nextRound()
-    updateTopBar()
+    nextRound();
+    updateTopBar();
 }
 
 function nextRound(){
-    if(round >= totalRounds){
+    if(round > totalRounds){
         endGame()
         return
     }
-    //display the word
-    const word = getRandomColor()
+    //next phase
+    if(round === 10  && isFirstPhase){
+        isFirstPhase = false
+        isGamePaused = true
+        showPopup()
+        return 
+    }
+
+    currentWord = getRandomColor()
     currentColor = getRandomColor() //get a roundom color for the word
-    wordDisplay.textContent = word
+    wordDisplay.textContent = currentWord
 
     if(currentColor === "Red"){
         wordDisplay.style.color = "red"
@@ -92,14 +114,16 @@ function nextRound(){
     timeLeft = 2.0
     updateTopBar()
 
-    clearInterval(timerInterval) //stop the old timer
-    timerInterval = setInterval(()=>{
-        timeLeft -= 0.1
-        updateTopBar()
+    clearInterval(timerInterval) //clear existing timer
 
-        if (timeLeft <= 0){
-            clearInterval(timerInterval)
-            handleUserGuess(null) //no guess
+    timerInterval = setInterval(() => {
+        if(!isGamePaused){
+            timeLeft -= 0.1
+            updateTopBar()
+            if(timeLeft <= 0){
+                clearInterval(timerInterval)
+                handleUserGuess(null)
+            }
         }
     }, 100)
 
@@ -120,11 +144,11 @@ function endGame(){
     endScreen.classList.add("show")
 
     let message
-    if(score >= 80){
+    if(score >= 180){
         message = "WOW! You're a Stroop Master!"
-    }else if(score >= 50){
+    }else if(score >= 150){
         message = "Not bad! Getting better!"
-    }else if(score >= 10){
+    }else if(score >= 110){
         message = "Keep practicing! You'll get there!"
     }else{
         message = ''
@@ -137,6 +161,7 @@ function getRandomColor(){
     //get a random color from colors array
     return colors[Math.floor(Math.random()*colors.length)]
 }
+
 function getRandomColorPosition(){
     const colorsContainer = document.querySelector("#colors")
     const buttons = Array.from(colorsContainer.children) //get button elements from the DOM in a array
@@ -144,5 +169,22 @@ function getRandomColorPosition(){
 
     shuffled.forEach(btn => colorsContainer.appendChild(btn))
 }
+
+function showPopup(){
+    const popup = document.querySelector("#popup-1")
+    const closeBtn = document.querySelector("#close-popup")
+
+    isGamePaused = true
+    popup.style.display = "flex"
+
+    function handleClose(){
+        popup.style.display = "none"
+        isGamePaused = false
+        nextRound()
+    }
+
+    closeBtn.addEventListener('click', handleClose, { once: true })
+}
+
 }
 addEventListener('DOMContentLoaded', init)
