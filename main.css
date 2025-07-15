@@ -1,18 +1,18 @@
 *{
-    /* background-color: #232325; */
     background-color: #000000;
     color: white;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
 }
 h1{
-    font-size: 100px;
+    font-size: 170px;
     color: #169976;
     padding-top: 100px;
     margin-bottom: 20px;
+    font-family: "VT323";
 }
 .description{
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-bottom: 30px;
     margin-top: 1px;
     margin-bottom: 100px; 
@@ -40,29 +40,51 @@ button:hover{
     display: flex;
 }
 #top-bar{
-    display: flex;
+    display: grid;
     justify-content: space-between;
-    width: 100%;
-    font-size: 1.2em;
+    width: auto;
+    font-size: 1.8em;
+    margin-top: 30px 0 0 0;
+    padding: 15px;
+    gap: 600px;
+    grid-template-columns: 1fr auto 1fr; /*display*/
 }
 .game-over{    
-    font-size: 100px;
+    font-size: 170px;
     font-weight: bold;
     color: #169976;
     padding-top: 100px;
     margin-bottom: 20px; 
+    font-family: "VT323";
 }
 #words{
-    font-size: 100px;
-    margin: 200px 0 50px 0;
+    font-size: 150px;
+    margin: 100px 0 50px 0;
     padding-bottom: 20px;
+    font-family: "VT323";
+    letter-spacing: 8px;
 }
 .circle-btn{
-    width: 110px;
-    height: 110px;
+    width: 200px;
+    height: 200px;
     border: none;
+    margin: 0 20px;
+    cursor: pointer;
+}
+.circle-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 #feedback{
-   margin-top: 60px; 
-   font-size: 25px;
+    margin: 0 auto 40px; 
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: -30px;
 }
+#final-score{
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+}
+
+

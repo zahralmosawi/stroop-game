@@ -4,7 +4,7 @@ let round = 1
 let timeLeft = 1.0
 let score = 0
 let curretColor
-const totalRounds = 10
+const totalRounds = 10 
 
 //DOM elements
 const startScreen = document.querySelector('#start-screen')
@@ -46,44 +46,15 @@ function startGame(){
     nextRound()
 }
 
-function nextRound(){
-    if(round > totalRounds){
-        endGame()
-        return
-    }
-    //display the word
-    const word = getRandomColor()
-    curretColor = getRandomColor() //get a roundom color for the word
-    wordDisplay.textContent = word
-
-    if(curretColor === "Red"){
-        wordDisplay.style.color = 'red'
-    }else if (curretColor === "Green"){
-        wordDisplay.style.color = "green"
-    }else if (curretColor === "Yellow"){
-        wordDisplay.style.color = "yellow"
-    }else if (curretColor === "Blue"){
-        wordDisplay.style.color = "blue"
-    }else if (curretColor === "Purple"){
-        wordDisplay.style.color = "purple"
-    }else if (curretColor === "Pink"){
-        wordDisplay.style.color = "pink"
-    }
-}
-
 function handleUserGuess(selectdColor){
     const feedback = document.querySelector('#feedback')
     if(selectdColor === curretColor){
         score += 10
         feedback.textContent = 'correct' 
-        feedback.style.color = 'green'
-        //SOMETHING WRONG HERE
-        // feedback.className('feedback-message') 
+        feedback.style.color = 'green' 
     }else{
         feedback.textContent = 'wrong'
         feedback.style.color = 'red'
-        //SOMETHING WRONG HERE
-        // feedback.className('feedback-message')
     }
     nextRound()
     updateTopBar()
@@ -113,6 +84,8 @@ function nextRound(){
         wordDisplay.style.color = "pink"
     }
     round++
+    updateTopBar()
+    getRandomColorPosition()
 }
 
 function updateTopBar(){
@@ -141,6 +114,12 @@ function getRandomColor(){
     //get a random color from colors array
     return colors[Math.floor(Math.random()*colors.length)]
 }
-
+function getRandomColorPosition(){
+    const colorsContainer = document.querySelector("#colors")
+    const buttons = Array.from(colorsContainer.children) //get button elements from the DOM
+    const shuffled = buttons.sort(() => Math.random() - 0.5 ) //random sort
+    
+    shuffled.forEach(btn => colorsContainer.appendChild(btn))
+}
 }
 addEventListener('DOMContentLoaded', init)
