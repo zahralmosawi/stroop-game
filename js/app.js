@@ -45,6 +45,7 @@ colorsBtns.forEach(button => {
 
 function startGame(){
     //reset game state
+    wordDisplay.style.visibility = "visible"
     score = 0
     round = 0
 
@@ -87,7 +88,7 @@ function handleUserGuess(selectedColor){
 }
 
 function nextRound(){
-    if(round > totalRounds){
+    if(round >= totalRounds){
         endGame()
         return
     }
