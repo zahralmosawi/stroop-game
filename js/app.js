@@ -44,7 +44,7 @@ colorsBtns.forEach(button => {
 })
 
 function startGame(){
-    //reset game state
+    //reset the game state
     wordDisplay.style.visibility = "visible"
     score = 0
     round = 0
@@ -137,7 +137,7 @@ function nextRound(){
         setTimeout(() => {
             wordDisplay.style.visibility = 'hidden'
             enableColorButtons()
-        },500) //DO NOT CHANGE IT
+        },500) 
     }else{
         enableColorButtons()
     }
@@ -151,7 +151,7 @@ function nextRound(){
                 handleUserGuess(null)
             }
         }
-    }, 200) //DO NOT CHANGE IT
+    }, 200) 
 
     round++
     updateTopBar()
@@ -180,7 +180,7 @@ function endGame(){
         message = ''
     }
 
-    finalScore.textContent = `Your Score is: ${score}`
+    finalScore.textContent = `Your Score is ${score}`
     finalFeedback.textContent = `${message}`
 }
 

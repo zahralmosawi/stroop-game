@@ -14,9 +14,7 @@ h1{
 }
 .description{
     font-size: 1.3rem;
-    /* margin-bottom: 30px; */
     margin-top: 1px;
-    /* margin-bottom: 100px;  */
 }
 button{
   display: inline-flex;
