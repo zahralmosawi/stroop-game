@@ -14,9 +14,9 @@ h1{
 }
 .description{
     font-size: 1.3rem;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     margin-top: 1px;
-    margin-bottom: 100px; 
+    /* margin-bottom: 100px;  */
 }
 button{
   display: inline-flex;
@@ -32,6 +32,9 @@ button{
 button:hover{
     background-color: #222222;
 }
+#play{
+    margin-top: 30px;
+}
 #game-screen, #end-screen, #start-screen{
     display: none;
     flex-direction: column;
@@ -39,6 +42,9 @@ button:hover{
 }
 #start-screen.show, #game-screen.show, #end-screen.show{
     display: flex;
+}
+.container{
+    margin-top: -50px;
 }
 #top-bar{
     display: grid;
@@ -89,7 +95,17 @@ button:hover{
     margin-bottom: 119px;
     margin-top: 1px;
 }
-/* Popup Styles */
+#c-end{
+    margin: 10px;
+    font-family: "VT323";
+}
+#final-feedback{
+    margin-top: -100px;
+    margin-bottom: 20px;
+}
+#close-popup{
+    margin-top: 10px;
+}
 .popup {
     position: fixed;
     top: 0;
@@ -100,8 +116,9 @@ button:hover{
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    padding: 0 50px 0 50px;
+    /* z-index: 1000;
+    padding: 0 50px 0 50px; */
+    font-size: 20px;
 }
 
 .popup-btn {

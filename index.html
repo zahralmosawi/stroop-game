@@ -19,11 +19,21 @@
     <audio id="wronganswer" src="assets/wronganswer-37702.mp3"></audio>
     <!-- START SCREEN -->
     <div id="start-screen" class="show">
-        <h1>Stroop Game</h1>
-        <p class="description">This is attention game! You must match the color of the word, not what it says. <br> <span> You have 10 rounds and 2 second for each. </span><span><Strong>Can you reach 100 points in 20 second?</Strong></span>
-        </p>
-        <p id="rules"></p> <!--ADD THEM OR REMOVE IT-->
-        <button id="play" class="buttons">let's play</button>
+        <div id="s-end" class="container">
+            <h1>Stroop Game</h1>
+            <p class="description">
+                This is attention game! <span> You have 30 rounds and xx second for each. <br>
+                </span><span><Strong>Can you reach 300 points in xx second?</Strong><br><br>
+                <!-- <span><strong>Rules: </strong></span><br> -->
+                <span>
+                    <strong>phase one:</strong> you must match the color not the word <br> 
+                    <strong>phase two:</strong> you must match the word not the color <br> 
+                    <strong>phase three:</strong> same as phase one but REMEMBER the color
+                </span>
+            </p>
+            <button id="play" class="buttons">let's play</button>
+        </div>
+        <p id="rules">  </p> <!--ADD THEM OR REMOVE IT-->
     </div>
     <!-- MAIN SCREEN -->
     <div id="game-screen">
@@ -46,16 +56,18 @@
     </div>
     <!-- FINAL SCREEN -->
      <div id="end-screen">
-        <p class="game-over">Game Over</p>
-        <div id="final-score"></div>
-        <button id="play-again" class="buttons">Play Again</button>
+        <div id="c-end" class="container">
+            <p class="game-over">Game Over</p>
+            <div id="final-score"></div>
+            <div id="final-feedback"></div>
+            <button id="play-again" class="buttons">Play Again</button>
+        </div>
      </div>
      <!-- popup -->
      <div id="popup-1" class="popup">
         <div id="content">
             <h3>Phase Changed!</h3>
-            <p>Now select the WORD, not its color!</p>
-            <p>Remember ......</p>
+            <p id="popup-content"></p>
             <button id="close-popup" class="buttons">Got it!</button>
         </div>
      </div>

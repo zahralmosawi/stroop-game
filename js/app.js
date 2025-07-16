@@ -26,6 +26,8 @@ const timerDisplay = document.querySelector('#timer')
 const scoreDisplay = document.querySelector('#score')
 const wordDisplay = document.querySelector('#words')
 const finalScore = document.querySelector('#final-score')
+const finalFeedback = document.querySelector('#final-feedback')
+const popupContent = document.querySelector('#popup-content') 
 
 const colorsBtns = document.querySelectorAll('.circle-btn')
 
@@ -59,7 +61,7 @@ function startGame(){
 }
 
 function handleUserGuess(selectedColor){
-    //Sounds Effects
+    //Sound Effects
     const correctAnsSound = document.querySelector("#rightanswer")
     const wrongAnsSound = document.querySelector("#wronganswer")
 
@@ -124,25 +126,20 @@ function nextRound(){
         wordDisplay.style.color = "pink"
     }
 
-    timeLeft = 2.0
+    timeLeft = 1.0
+    clearInterval(timerInterval) //clear the timer
     updateTopBar()
 
     if(isthirdPhase){
+        wordDisplay.style.visibility = "visible"
         disableColorButtons()
         setTimeout(() => {
-            wordDisplay.textContent = ''
+            wordDisplay.style.visibility = 'hidden'
             enableColorButtons()
-        }, 2000)
+        },500) //DO NOT CHANGE IT
     }else{
         enableColorButtons()
     }
-
-    // clearInterval(timerInterval) //clear existing timer
-    // if(isthirdPhase){
-    //     setTimeout(() => {
-    //         wordDisplay.textContent = ''
-    //     }, 1500)
-    // }
 
     timerInterval = setInterval(() => {
         if(!isGamePaused){
@@ -153,7 +150,7 @@ function nextRound(){
                 handleUserGuess(null)
             }
         }
-    }, 300)
+    }, 200) //DO NOT CHANGE IT
 
     round++
     updateTopBar()
@@ -176,13 +173,14 @@ function endGame(){
         message = "WOW! You're a Stroop Master!"
     }else if(score >= 150){
         message = "Not bad! Getting better!"
-    }else if(score >= 110){
+    }else if(score <= 110){
         message = "Keep practicing! You'll get there!"
     }else{
         message = ''
     }
 
-    finalScore.textContent = `${message} Your Score: ${score}`
+    finalScore.textContent = `Your Score is: ${score}`
+    finalFeedback.textContent = `${message}`
 }
 
 function getRandomColor(){
@@ -204,6 +202,12 @@ function showPopup(){
 
     isGamePaused = true
     popup.style.display = "flex"
+
+    if(isSecondPhase){
+        popupContent.textContent = 'Now select the WORD, not its color!'
+    }else if(isthirdPhase){
+        popupContent.textContent = 'Now you just have to REMEMBER the color'
+    }
 
     function handleClose(){
         popup.style.display = "none"
