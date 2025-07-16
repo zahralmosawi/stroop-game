@@ -90,17 +90,21 @@ button:hover{
     top: -30px;
 }
 #final-score{
-    font-size: 1.3rem;
+    font-size: 22px;
     margin-bottom: 119px;
     margin-top: 1px;
 }
 #c-end{
-    margin: 10px;
+    margin: -20px;
     font-family: "VT323";
 }
 #final-feedback{
     margin-top: -100px;
     margin-bottom: 20px;
+    font-size: 22px;
+}
+#play-again{
+    margin-top: 50px;
 }
 #close-popup{
     margin-top: 10px;
@@ -120,7 +124,6 @@ button:hover{
 #popup-content{
     font-size: 20px;
 }
-
 .popup-btn {
     background: #169976;
     color: white;
@@ -131,7 +134,6 @@ button:hover{
     cursor: pointer;
     margin-top: 20px;
 }
-
 .popup-btn:hover {
     background: #117a5a;
 }
