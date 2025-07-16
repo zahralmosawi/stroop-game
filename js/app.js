@@ -1,6 +1,6 @@
 function init(){
 const colors = ["Red","Green","Yellow","Blue","Purple","Pink"]
-const totalRounds = 20 
+const totalRounds = 30 
 
 let round = 0
 let timerInterval
@@ -9,6 +9,8 @@ let score = 0
 let currentColor
 let currentWord
 let isFirstPhase  = true
+let isSecondPhase = false
+let isthirdPhase = false
 let isGamePaused = false
 
 //DOM elements
@@ -45,6 +47,8 @@ function startGame(){
     round = 0
 
     isFirstPhase = true
+    isSecondPhase = false
+    isthirdPhase = false
     isGamePaused = false
 
     startScreen.classList.remove("show") //hide the main screen 
@@ -59,23 +63,23 @@ function handleUserGuess(selectedColor){
     const correctAnsSound = document.querySelector("#rightanswer")
     const wrongAnsSound = document.querySelector("#wronganswer")
 
+    let isCorrect = false
+
     if(isFirstPhase){
-        if(selectedColor === currentColor){
-            score += 10
-            correctAnsSound.play()
-            // feedback.textContent = 'correct' 
-            // feedback.style.color = 'green'
-        }else{
-            wrongAnsSound.play()
-        }
-    }else{
-        if(selectedColor === currentWord){
-            score += 10
-            correctAnsSound.play()
-        }else{
-            wrongAnsSound.play()
-        }
+        isCorrect = selectedColor === currentColor
+    }else if(isSecondPhase){
+        isCorrect = selectedColor === currentWord
+    }else if(isthirdPhase){
+        isCorrect = selectedColor === currentColor
     }
+
+    if(isCorrect){
+        score += 10
+        correctAnsSound.play()
+    }else{
+        wrongAnsSound.play()
+    }
+
     nextRound();
     updateTopBar();
 }
@@ -85,12 +89,21 @@ function nextRound(){
         endGame()
         return
     }
-    //next phase
+    //second phase
     if(round === 10  && isFirstPhase){
         isFirstPhase = false
+        isSecondPhase = true
         isGamePaused = true
         showPopup()
         return 
+    }
+    //third phase 
+    if(round === 20 && isSecondPhase){
+        isSecondPhase = false
+        isthirdPhase = true
+        isGamePaused = true
+        showPopup()
+        return
     }
 
     currentWord = getRandomColor()
@@ -114,7 +127,22 @@ function nextRound(){
     timeLeft = 2.0
     updateTopBar()
 
-    clearInterval(timerInterval) //clear existing timer
+    if(isthirdPhase){
+        disableColorButtons()
+        setTimeout(() => {
+            wordDisplay.textContent = ''
+            enableColorButtons()
+        }, 2000)
+    }else{
+        enableColorButtons()
+    }
+
+    // clearInterval(timerInterval) //clear existing timer
+    // if(isthirdPhase){
+    //     setTimeout(() => {
+    //         wordDisplay.textContent = ''
+    //     }, 1500)
+    // }
 
     timerInterval = setInterval(() => {
         if(!isGamePaused){
@@ -125,7 +153,7 @@ function nextRound(){
                 handleUserGuess(null)
             }
         }
-    }, 100)
+    }, 300)
 
     round++
     updateTopBar()
@@ -184,6 +212,13 @@ function showPopup(){
     }
 
     closeBtn.addEventListener('click', handleClose, { once: true })
+}
+//ENABLE/ DISABLE
+function disableColorButtons(){
+    colorsBtns.forEach(btn => btn.disabled = true)
+}
+function enableColorButtons(){
+    colorsBtns.forEach(btn => btn.disabled = false)
 }
 
 }
