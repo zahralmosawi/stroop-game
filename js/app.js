@@ -170,11 +170,11 @@ function endGame(){
     endScreen.classList.add("show")
 
     let message
-    if(score >= 180){
+    if(score >= 280){
         message = "WOW! You're a Stroop Master!"
-    }else if(score >= 150){
+    }else if(score >= 250){
         message = "Not bad! Getting better!"
-    }else if(score <= 110){
+    }else if(score <= 210){
         message = "Keep practicing! You'll get there!"
     }else{
         message = ''
