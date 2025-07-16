@@ -1,15 +1,16 @@
-#Stroop Game
+#Stroop Game <img width="200" height="200" src="assets/game-logo.png" alt="Game icon">
 ## Table of Contents
 [Introduction](#introduction)
 [Project Requirements](#project-requirements)
 [Project Brief](#project-brief)
 [Technologies](#technologies)
 [Game Guide](#game-guide)
+[Game Link]
 [Features](#features)
 [Future Features](#future-features)
 
 ## Introduction
-I was tasked to build a game for project 1 of the Software Engineering course at General Assembly. The Stroop Game is a web-based attention and memory challenge inspired by the psychological phenomenon known as Stroop Effect that occurs when the brain interprets conflicting information, like reading a color name printed in a different color. It causes a delay in reaction time
+I was tasked to build a game for project 1 of the Software Engineering course at General Assembly. The Stroop Game is a web-based attention and memory challenge inspired by the psychological phenomenon known as Stroop Effect that occurs when the brain interprets conflicting information, like reading a color name printed in a different color. It causes a delay in reaction time 
 
 ## Project Requirements
 - Includes win/loss logic with appropriate messages
@@ -19,9 +20,9 @@ I was tasked to build a game for project 1 of the Software Engineering course at
 - Deployed online
 
 ## Project Brief
-The project is built using front-end web technologies: HTML, CSS, and JavaScript,  with a focus on DOM manipulation, timed interactions, and responsive user feedback, Each phase introduces a new twist, to increase player attention
+The project is built using front-end web technologies: HTML, CSS, and JavaScript, with a focus on DOM manipulation, timed interactions, and responsive user feedback, Each phase introduces a new twist, to increase player attention
 
-<img width="400" height="400" src="assets/StroopGame.png" alt="Screenshot of the game ">
+<img width="600" height="600" src="assets/StroopGame.png" alt="Screenshot of the game ">
 
 ## Technologies
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -50,6 +51,9 @@ The task: click the correct color from memory
 - Correct answers earn +10 points, wrong answers earn 0
 - Maximum score is 300 points
 - Final feedback message is shown based on the score
+
+## Game Link 
+You can play the game live [Play Stroop Game](https://zahralmosawi.github.io/stroop-game/)
 
 ## Features
 - Sound effects for correct and incorrect answers
