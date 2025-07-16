@@ -1,11 +1,11 @@
-#Stroop Game <img width="200" height="200" src="assets/game-logo.png" alt="Game icon">
+#Stroop Game
 ## Table of Contents
 [Introduction](#introduction)
 [Project Requirements](#project-requirements)
 [Project Brief](#project-brief)
 [Technologies](#technologies)
 [Game Guide](#game-guide)
-[Game Link]
+[Game Link](#game-link)
 [Features](#features)
 [Future Features](#future-features)
 
