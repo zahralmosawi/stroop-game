@@ -1,21 +1,13 @@
 #Stroop Game
 ## Table of Contents
 [Introduction](#introduction)
-
 [Project Requirements](#project-requirements)
-
 [Project Brief](#project-brief)
-
-[Project Plan](#)
-
+[Project Plan](#project-plan)
 [Technologies](#technologies)
-
 [Game Guide](#game-guide)
-
 [Game Link](#game-link)
-
 [Features](#features)
-
 [Future Features](#future-features)
 
 ## Introduction
