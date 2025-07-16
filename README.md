@@ -6,6 +6,8 @@
 
 [Project Brief](#project-brief)
 
+[Project Plan](#)
+
 [Technologies](#technologies)
 
 [Game Guide](#game-guide)
@@ -30,6 +32,9 @@ I was tasked to build a game for project 1 of the Software Engineering course at
 The project is built using front-end web technologies: HTML, CSS, and JavaScript, with a focus on DOM manipulation, timed interactions, and responsive user feedback, Each phase introduces a new twist, to increase player attention
 
 <img width="600" height="600" src="assets/StroopGame.png" alt="Screenshot of the game ">
+
+## Project Plan
+You can see the user stories and the pseudocode [here](https://drive.google.com/file/d/16X51bXj6XP_3axjrCUGMFgVYtYEf1L6p/view?usp=drive_link)
 
 ## Technologies
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
