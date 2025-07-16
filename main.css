@@ -119,6 +119,9 @@ button:hover{
     align-items: center;
     font-size: 27px;
 }
+#popup-content{
+    font-size: 20px;
+}
 
 .popup-btn {
     background: #169976;
