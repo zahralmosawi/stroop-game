@@ -39,7 +39,7 @@ playAgainBtn.addEventListener('click', startGame)
 colorsBtns.forEach(button => {
     button.addEventListener('click', () => {
         const selectedColor = button.getAttribute('data-color');
-        handleUserGuess(selectedColor)
+        handleUserGuess(selectedColor) 
     })
 })
 
@@ -165,6 +165,7 @@ function updateTopBar(){
 }
 
 function endGame(){
+    clearInterval(timerInterval)
     //hide game screen and show the end screen
     gameScreen.classList.remove("show")
     endScreen.classList.add("show")
